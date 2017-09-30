@@ -1,9 +1,11 @@
 var ball;
 var paddle;
+var tiles = [];
 function setup() {
   createCanvas(1100, 700);
   ball = new ball();
   paddle = new paddle();
+  // add loop to create matrix of tiles
 
 }
 
@@ -11,8 +13,10 @@ function draw() {
     background(0);
     ball.show();
     paddle.show();
+// add rendering of the matrix of tiles
     paddle.update();
     ball.update();
+  
     checkCollision();
 
   
