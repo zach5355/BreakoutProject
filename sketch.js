@@ -1,11 +1,36 @@
 var ball;
 var paddle;
-var tiles = [];
+var tiles;
+var rows;
+var columns;
+var tilePadding;
+var tileLength;
+var tileHeight;
 function setup() {
   createCanvas(1100, 700);
   ball = new ball();
   paddle = new paddle();
+  rows = 5;
+  columns = 7;
+  tilePadding = 10;
+  tiles = new Array(columns);
+  for(i = 0; i < columns; i++)
+  {
+    tiles[i] = new Array(rows);
+  }
+  tileLength = (width - (columns* tilePadding)) / columns;
+  tileHeight = ((height/3) - (rows * tilePadding)) / rows;
   // add loop to create matrix of tiles
+
+  for(c =0; c < columns; c++)
+  {
+
+    for(r = 0; r < rows; r++)
+    {
+      tiles[c][r] = new tile(c*(tilePadding + tileLength),r*(tilePadding + tileHeight),tileLength,tileHeight);
+    }
+  }
+
 
 }
 
@@ -13,7 +38,7 @@ function draw() {
     background(0);
     ball.show();
     paddle.show();
-// add rendering of the matrix of tiles
+    showTiles();
     paddle.update();
     ball.update();
   
@@ -41,5 +66,18 @@ function checkCollision()
     ball.dy = -ball.dy;
   }
 
+
+
+}
+
+function showTiles()
+{
+  for(c = 0; c< columns; c++)
+  {
+    for(r = 0; r < rows; r++)
+    {
+      tiles[c][r].show();
+    }
+  }
 }
 

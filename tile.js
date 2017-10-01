@@ -1,7 +1,7 @@
-function tile(x,y)
+function tile(x,y, length, height)
 {
-this.length = 120;
-this.height = 10;
+this.length = length;
+this.height = height;
 this.x = x;
 this.y = y;
 
